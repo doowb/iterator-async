@@ -1,4 +1,4 @@
-# iterator-sync [![NPM version](https://badge.fury.io/js/iterator-sync.svg)](http://badge.fury.io/js/iterator-sync)  [![Build Status](https://travis-ci.org/doowb/iterator-sync.svg)](https://travis-ci.org/doowb/iterator-sync)
+# iterator-async [![NPM version](https://badge.fury.io/js/iterator-async.svg)](http://badge.fury.io/js/iterator-async)  [![Build Status](https://travis-ci.org/doowb/iterator-async.svg)](https://travis-ci.org/doowb/iterator-async)
 
 > Iterator over a stack of functions.
 
@@ -7,13 +7,13 @@ This module is intended to be used with [loader-cache](https://github.com/jonsch
 Install with [npm](https://www.npmjs.com/)
 
 ```sh
-$ npm i iterator-sync --save
+$ npm i iterator-async --save
 ```
 
 ## Usage
 
 ```js
-var iterator = require('iterator-sync');
+var iterator = require('iterator-async');
 ```
 
 ## API
@@ -22,7 +22,7 @@ var iterator = require('iterator-sync');
 
 ### [iterator](index.js#L20)
 
-Iterate over a stack of functions passing the results of
+Iterate over a stack of async functions passing the results of
 each function to the next function in the stack.
 
 **Params**
@@ -32,20 +32,22 @@ each function to the next function in the stack.
 
 ```js
 var fs = require('fs');
-var iterator = require('iterator-sync');
+var iterator = require('iterator-async');
 var stack = [
-  function (fp) { return fs.readFileSync(fp, 'utf8'); },
-  function (contents) { return JSON.parse(contents); }
+  function (fp, next) { return fs.readFile(fp, 'utf8', next); },
+  function (contents, next) { return next(null, JSON.parse(contents)); }
 ];
 var readJSON = iterator(stack);
-var pkg = readJSON('./package.json');
-console.log(pkg);
+readJSON('./package.json', function (err, pkg) {
+  if (err) console.error(err);
+  console.log(pkg);
+});
 ```
 
 ## Related projects
 
 <!-- add an array of related projects, then un-escape the helper -->
-<%- related(['iterator-async', 'iterator-promise', 'iterator-streams', 'loader-cache']) %>
+<%- related(['iterator-sync', 'iterator-promise', 'iterator-streams', 'loader-cache']) %>
 
 ## Running tests
 
@@ -57,7 +59,7 @@ $ npm i -d && npm test
 
 ## Contributing
 
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/iterator-sync/issues/new)
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/doowb/iterator-async/issues/new)
 
 ## Author
 
