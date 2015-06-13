@@ -3,7 +3,7 @@
 var assert = require('assert');
 var iterator = require('./');
 
-describe('iterator-sync', function () {
+describe('iterator-async', function () {
   it('should create an iterator function when given a stack', function () {
     var called = [];
     var stack = getStack(called);
@@ -11,26 +11,29 @@ describe('iterator-sync', function () {
     assert.equal(typeof fn, 'function');
   });
 
-  it('should iterate over a stack of functions', function () {
+  it('should iterate over a stack of functions', function (done) {
     var called = [];
     var stack = getStack(called);
-    assert.deepEqual(iterator(stack)('foo', 'bar'), { foo: 'bar' });
-    assert.deepEqual(called, ['a', 'b', 'c', 'd', 'e']);
+    iterator(stack)('foo', 'bar', function (err, actual) {
+      assert.deepEqual(actual, { foo: 'bar' });
+      assert.deepEqual(called, ['a', 'b', 'c', 'd', 'e']);
+      done();
+    });
   });
 });
 
 function getStack (called) {
   var stack = [
-    function a (key, value) {
+    function a (key, value, next) {
       called.push('a');
       var obj = {};
       obj[key] = value;
-      return obj;
+      next(null, obj);
     },
-    function b (obj) { called.push('b'); return obj; },
-    function c (obj) { called.push('c'); return obj; },
-    function d (obj) { called.push('d'); return obj; },
-    function e (obj) { called.push('e'); return obj; }
+    function b (obj, next) { called.push('b'); next(null, obj); },
+    function c (obj, next) { called.push('c'); next(null, obj); },
+    function d (obj, next) { called.push('d'); next(null, obj); },
+    function e (obj, next) { called.push('e'); next(null, obj); }
   ];
   return stack;
 }
