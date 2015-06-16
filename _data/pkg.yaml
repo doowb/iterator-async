@@ -16,3 +16,8 @@ scripts:
   test: mocha
 devDependencies:
   mocha: '*'
+related:
+  - loader-cache
+  - iterator-streams
+  - iterator-sync
+  - iterator-promise
