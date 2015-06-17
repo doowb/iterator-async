@@ -1,12 +1,15 @@
 content: >-
-  <li><a href="https://github.com/doowb/iterator-streams">iterator-streams</a>:
-  Iterator over a stack of functions.</li>
-
-  <li><a href="https://github.com/doowb/iterator-sync">iterator-sync</a>:
-  Iterator over a stack of functions.</li>
+  <li><a href="https://github.com/caolan/async#readme">async</a>: Higher-order
+  functions and common patterns for asynchronous code</li>
 
   <li><a href="https://github.com/doowb/iterator-promise">iterator-promise</a>:
   Iterator over a stack of functions.</li>
+
+  <li><a href="https://github.com/doowb/iterator-streams">iterator-streams</a>:
+  Iterator over a stack of functions.</li>
+
+  <li><a href="https://github.com/doowb/iterator-sync">iterator-sync</a>: Iterate
+  over a stack of functions.</li>
 
   <li><a href="https://github.com/jonschlinkert/loader-cache">loader-cache</a>:
   Register loader functions that dynamically read, parse or otherwise transform
