@@ -7,6 +7,9 @@
 
 'use strict';
 
+var lazy = require('lazy-cache')(require);
+var async = lazy('async');
+
 /**
  * Iterate over a stack of async functions passing the results of
  * each function to the next function in the stack.
@@ -18,25 +21,5 @@
  */
 
 module.exports = function iteratorAync (stack) {
-  return function (/* arguments */) {
-    var self = this;
-    var args = [].slice.call(arguments);
-    var done = args.pop();
-    var results = null;
-    var len = stack.length, i = 0;
-    args.unshift(null);
-    if (!len) return done.apply(done, args);
-    next.apply(next, args);
-
-    function next (err/*, arguments */) {
-      args = [].slice.call(arguments);
-      err = args.shift();
-      if (err) return done(err);
-      if (i >= len) return done(null, args.shift());
-
-      var fn = stack[i++];
-      args.push(next);
-      fn.apply(self, args);
-    }
-  };
+  return async().seq.apply(async(), stack);
 };

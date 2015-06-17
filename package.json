@@ -30,5 +30,9 @@
       "iterator-sync",
       "loader-cache"
     ]
+  },
+  "dependencies": {
+    "async": "^1.2.1",
+    "lazy-cache": "^0.1.0"
   }
 }
