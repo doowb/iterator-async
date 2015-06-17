@@ -1,6 +1,6 @@
 # iterator-async [![NPM version](https://badge.fury.io/js/iterator-async.svg)](http://badge.fury.io/js/iterator-async)  [![Build Status](https://travis-ci.org/doowb/iterator-async.svg)](https://travis-ci.org/doowb/iterator-async)
 
-> Iterator over a stack of functions.
+> Iterate over a stack of functions.
 
 This module is intended to be used with [loader-cache](https://github.com/jonschlinkert/loader-cache)but may be used by itself or in other modules.
 

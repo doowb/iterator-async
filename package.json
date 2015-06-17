@@ -1,6 +1,6 @@
 {
   "name": "iterator-async",
-  "description": "Iterator over a stack of functions.",
+  "description": "Iterate over a stack of functions.",
   "version": "0.1.0",
   "homepage": "https://github.com/doowb/iterator-async",
   "author": "Brian Woodward (https://github.com/doowb)",
@@ -27,5 +27,15 @@
     "iterator-streams",
     "iterator-sync",
     "iterator-promise"
-  ]
+  ],
+  "keywords": [
+    "cache",
+    "iterator",
+    "loader",
+    "loader-cache",
+    "loaders"
+  ],
+  "dependencies": {
+    "async": "^1.2.1"
+  }
 }
