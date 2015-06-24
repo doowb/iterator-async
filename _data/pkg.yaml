@@ -16,13 +16,14 @@ scripts:
   test: mocha
 devDependencies:
   mocha: '*'
-meta:
+verbiage:
   related:
-    - async
-    - iterator-promise
-    - iterator-streams
-    - iterator-sync
-    - loader-cache
+    links:
+      - async
+      - iterator-promise
+      - iterator-streams
+      - iterator-sync
+      - loader-cache
 dependencies:
   async: ^1.2.1
   lazy-cache: ^0.1.0
