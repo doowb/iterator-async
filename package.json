@@ -34,5 +34,12 @@
   "dependencies": {
     "async": "^1.2.1",
     "lazy-cache": "^0.1.0"
-  }
+  },
+  "contributors": [
+    {
+      "name": "Brian Woodward",
+      "email": "brian.woodward@gmail.com",
+      "url": "https://github.com/doowb"
+    }
+  ]
 }
